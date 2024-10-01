@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app_v2/presentation/watch_list_screen/watch_list_view_model.dart';
+import 'package:provider/provider.dart';
 
 import 'watch_list_movie_widget.dart';
 
@@ -16,8 +18,11 @@ class WatchAllListWidget extends StatelessWidget {
 
   ];
 
+
+
   @override
   Widget build(BuildContext context) {
+
     return Expanded(
       child: SizedBox(
         height: MediaQuery.of(context).size.height,

@@ -1,10 +1,11 @@
 
 import 'package:flutter/material.dart';
 
+import '../basic_files/choose_book_mark.dart';
 import '../basic_files/my_theme/my_theme_data.dart';
 import '../movie_details/movie_details_widget.dart';
 
-class ImageWithBookMarkWidget extends StatelessWidget {
+class ImageWithBookMarkWidget extends StatefulWidget {
    ImageWithBookMarkWidget(
        {
          required this.imageName,
@@ -12,8 +13,13 @@ class ImageWithBookMarkWidget extends StatelessWidget {
          super.key});
 
   String? imageName;
-  bool addWatchList=false;
+  bool addWatchList;
 
+  @override
+  State<ImageWithBookMarkWidget> createState() => _ImageWithBookMarkWidgetState();
+}
+
+class _ImageWithBookMarkWidgetState extends State<ImageWithBookMarkWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -23,20 +29,18 @@ class ImageWithBookMarkWidget extends StatelessWidget {
           onTap: (){
             Navigator.pushNamed(context, MovieDetailsWidget.routeName);
           },
-            child:  Image.network('https://image.tmdb.org/t/p/w500$imageName')
+            child:  Image.network('https://image.tmdb.org/t/p/w500${widget.imageName}')
         ),
-        const Positioned(
+        Positioned(
           top:-5,
           left: -8,
-          child: Stack(
-            alignment: AlignmentDirectional.center,
-            children: [
-              Opacity(
-                opacity:0.8,
-                  child: Icon(Icons.bookmark,color: MyThemeData.bookMarkBackground,size:40)),
-              Icon(Icons.add, color: Colors.white, size: 20,
-              )
-            ],
+          child: InkWell(
+            onTap: (){
+              setState(() {
+                widget.addWatchList =! widget.addWatchList;
+              });
+            },
+              child: ChooseBookMark(inWatchList:widget.addWatchList ,)
           ),
         ),
       ],

@@ -130,7 +130,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                             padding: EdgeInsets.all(5),
                                             child: NetworkPosterWithBookmark(
                                               filmInformation: newReleasesMoviesList[index],
-                                              addWatchList: false,
                                             ));
                                       },
                                     ),

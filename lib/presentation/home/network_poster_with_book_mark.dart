@@ -1,46 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app_v2/data/firestore_model/movies_database.dart';
+import 'package:movies_app_v2/data/providers/movies_provider.dart';
+import 'package:provider/provider.dart';
 
 
 import '../../data/api_model/Results.dart';
+import '../basic_files/choose_book_mark.dart';
+import '../basic_files/icon_in_watch_list.dart';
+import '../basic_files/icon_out_watch_list.dart';
 import '../basic_files/loading_small_image.dart';
-import '../basic_files/my_theme/my_theme_data.dart';
 import '../movie_details/movie_details_widget.dart';
+import '../watch_list_screen/watch_list_view_model.dart';
 
-class NetworkPosterWithBookmark extends StatelessWidget {
+class NetworkPosterWithBookmark extends StatefulWidget {
   NetworkPosterWithBookmark(
        {
          required this.filmInformation,
-         required this.addWatchList,
          super.key});
 
   Results? filmInformation;
-  bool? addWatchList=false;
 
   @override
+  State<NetworkPosterWithBookmark> createState() => _NetworkPosterWithBookmarkState();
+}
+
+class _NetworkPosterWithBookmarkState extends State<NetworkPosterWithBookmark> {
+  @override
   Widget build(BuildContext context) {
+
+    SavedMovie? movie;
+
+    bool? checkResult=false;
+    movie?.isInWatchList=false;
+    movie?.movieId=widget.filmInformation?.id.toString();
+    movie?.movieDate=widget.filmInformation?.releaseDate;
+    movie?.movieImage=widget.filmInformation?.posterPath;
+
+    var watchlistProvider = Provider.of<MoviesProvider>(context);
+
     return Stack(
       alignment: AlignmentDirectional.topStart,
       children: [
         InkWell(
           onTap: (){
             Navigator.pushNamed(context, MovieDetailsWidget.routeName,
-            arguments: filmInformation
+            arguments: widget.filmInformation
             );
           },
-            child: LoadingSmallImage(imageName: filmInformation?.posterPath)
+            child: LoadingSmallImage(imageName: widget.filmInformation?.posterPath)
         ),
-        const Positioned(
+        Positioned(
           top:-5,
           left: -8,
-          child: Stack(
-            alignment: AlignmentDirectional.center,
-            children: [
-              Opacity(
-                opacity:0.8,
-                  child: Icon(Icons.bookmark,color: MyThemeData.bookMarkBackground,size:40)),
-              Icon(Icons.add, color: Colors.white, size: 20,
-              )
-            ],
+          child:InkWell(
+            onTap: () async {
+              checkResult=await watchlistProvider.checkMovie(movie!);
+            if(checkResult==false){
+              watchlistProvider.addMovie(movie);
+            }
+            else {
+              watchlistProvider.removeMovie(movie);
+            }
+              setState((){
+              });
+            },
+
+              child:checkResult ? IconInWatchList():IconOutWatchList()
           ),
         ),
       ],

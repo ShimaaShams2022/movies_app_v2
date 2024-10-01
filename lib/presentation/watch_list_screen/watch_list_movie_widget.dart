@@ -6,6 +6,7 @@ import '../basic_files/utilities.dart';
 
 class WatchListMovieWidget extends StatelessWidget {
   WatchListMovieWidget({required this.imageName,super.key});
+
   String? imageName;
 
   @override
@@ -21,7 +22,7 @@ class WatchListMovieWidget extends StatelessWidget {
               child: Stack(
                 alignment: Alignment.topLeft,
                 children: [
-                  Image.asset(getFullPathImage(imageName!)),
+              Image.network('https://image.tmdb.org/t/p/w500$imageName'),
                 Positioned(
                     top:-5,
                     left:-9,

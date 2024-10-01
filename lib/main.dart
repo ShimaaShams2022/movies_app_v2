@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:movies_app_v2/data/providers/movies_provider.dart';
+import 'package:movies_app_v2/presentation/watch_list_screen/watch_list_view_model.dart';
+import 'package:provider/provider.dart';
 
 import 'di.dart';
 
@@ -20,9 +23,11 @@ void main() async{
     name: "movies_app_v2",
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   configureDependencies();
-  runApp(const MyApp());
+
+  runApp(ChangeNotifierProvider(
+      create: (BuildContext context) =>MoviesProvider(),
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
