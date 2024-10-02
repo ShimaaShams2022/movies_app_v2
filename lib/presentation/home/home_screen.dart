@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../di.dart';
+
 import '../basic_files/ErrorStateWidget.dart';
 import '../basic_files/custom_ads_widget.dart';
 import '../basic_files/loading_widget.dart';
@@ -128,10 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       itemBuilder: (context, index) {
                                         return Padding(
                                             padding: EdgeInsets.all(5),
-                                            child: NetworkPosterWithBookmark(
-                                              filmInformation: newReleasesMoviesList[index],
-                                              addWatchList: false,
-                                            ));
+                                            child: NetworkPosterWithBookmark(filmInformation: newReleasesMoviesList[index],));
                                       },
                                     ),
                                   ),

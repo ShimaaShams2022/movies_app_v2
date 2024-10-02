@@ -75,8 +75,7 @@ class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: PopularPosterWithBookMarkWidget(
-                        addWatchList: false,
-                        imageName: filmInformation?.posterPath ?? "",
+                        filmData: filmInformation!
                       ),
                     ),
                   ),

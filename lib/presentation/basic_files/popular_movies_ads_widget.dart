@@ -44,8 +44,7 @@ class PopularMoviesAdsWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 15,horizontal:15 ),
             child:  PopularPosterWithBookMarkWidget(
-              imageName: adsMovie.posterPath ?? "",
-              addWatchList: false,
+              filmData: adsMovie,
 
             ),
           )
