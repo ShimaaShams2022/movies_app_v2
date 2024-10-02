@@ -116,7 +116,7 @@ class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
                         Container(
                           width:MediaQuery.of(context).size.width*0.6,
                           child: Text(
-                            filmInformation?.overview ?? "",
+                            filmInformation.overview ?? "",
                             softWrap: true,
                             style: MyThemeData.darkTheme.textTheme.bodyLarge,
                           ),
@@ -131,7 +131,7 @@ class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
                                 size: 25,
                               ),
                               Text(
-                                  roundedNumber(filmInformation?.voteAverage ?? 0),
+                                  roundedNumber(filmInformation.voteAverage ?? 0),
                                   style: MyThemeData
                                       .darkTheme.textTheme.titleMedium),
                             ],

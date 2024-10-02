@@ -1,33 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../data/api_model/Results.dart';
-import '../../data/firestore_database/movie.dart';
-import '../../data/firestore_database/movie_provider.dart';
 import 'my_theme/my_theme_data.dart';
 
-class IconInWatchList extends StatelessWidget {
-  IconInWatchList({required this.movieResults,super.key});
+class IconInWatchList extends StatefulWidget {
+  IconInWatchList({super.key});
 
-  Results movieResults;
 
   @override
-  Widget build(BuildContext context) {
-    Movie movie = Movie(
-      id:movieResults.id.toString(),
-      title: movieResults.title,
-      date: movieResults.releaseDate,
-      posterName: movieResults.posterPath,
-      isInWatchList:false,
-    );
-    var moviesProvider= Provider.of<MovieProvider>(context,listen: true);
+  State<IconInWatchList> createState() => _IconInWatchListState();
+}
 
-    return InkWell(
-      onTap: (){
-        movie.isInWatchList=false;
-        moviesProvider.removeMovie(movie);
-        print("hjfdgshdgfshdgfhdsgd");
-      },
-      child: Stack(
+class _IconInWatchListState extends State<IconInWatchList> {
+  @override
+  Widget build(BuildContext context) {
+
+    return Stack(
         alignment: AlignmentDirectional.center,
         children: [
           Opacity(
@@ -36,7 +22,6 @@ class IconInWatchList extends StatelessWidget {
           Icon(Icons.check, color: Colors.white, size: 20,
           )
         ],
-      ),
-    );
+      );
   }
 }

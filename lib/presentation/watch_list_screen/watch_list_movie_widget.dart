@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app_v2/data/firestore_database/movie.dart';
 import 'package:movies_app_v2/presentation/basic_files/loading_image.dart';
+import 'package:movies_app_v2/presentation/watch_list_screen/watch_list_icon_book_mark.dart';
 
-import '../basic_files/book_mark_with_check.dart';
 import '../basic_files/my_theme/my_theme_data.dart';
 import '../basic_files/utilities.dart';
 
@@ -27,7 +27,7 @@ class WatchListMovieWidget extends StatelessWidget {
                 Positioned(
                     top:-5,
                     left:-9,
-                    child: BookMarkWithCheck()),
+                    child: WatchListIconBookMark(movieResults: movie,)),
 
                 ],
               ),

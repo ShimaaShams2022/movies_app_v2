@@ -8,7 +8,8 @@ import 'network_poster_with_book_mark.dart';
 
 class PosterWithSomeDetails extends StatelessWidget {
   PosterWithSomeDetails(
-      {required this.filmInformation,
+      {
+        required this.filmInformation,
         super.key});
 
 

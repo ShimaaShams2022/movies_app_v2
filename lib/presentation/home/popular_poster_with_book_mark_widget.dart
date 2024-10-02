@@ -1,10 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:movies_app_v2/presentation/basic_files/icon_out_watch_list.dart';
-
 import '../../data/api_model/Results.dart';
+import '../basic_files/icon_watch_list.dart';
 import '../basic_files/loading_image.dart';
-import '../basic_files/my_theme/my_theme_data.dart';
+
 
 class PopularPosterWithBookMarkWidget extends StatelessWidget {
    PopularPosterWithBookMarkWidget(
@@ -30,7 +29,7 @@ class PopularPosterWithBookMarkWidget extends StatelessWidget {
          Positioned(
           top:-5,
           left:-8,
-          child: IconOutWatchList(movieResults: filmData,),
+          child: IconWatchList(movieResults: filmData,),
         ),
       ],
     );

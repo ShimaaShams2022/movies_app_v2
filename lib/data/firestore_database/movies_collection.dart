@@ -1,8 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-
 import 'movie.dart';
+
 class MoviesCollection {
 
   CollectionReference<Movie> getMoviesCollection() {
@@ -17,8 +16,10 @@ class MoviesCollection {
   }
 
   Future<void> addMovie(Movie movie){
-    var docRef=getMoviesCollection();
-    return docRef.add(movie);
+    var docRef=getMoviesCollection().doc(movie.id.toString());
+    movie.isInWatchList=true;
+    return docRef.set(movie);
+
 
   }
 
@@ -30,7 +31,7 @@ class MoviesCollection {
 
 
   Future<void> removeMovie(Movie movie) {
-    var docRef=getMoviesCollection().doc(movie.id??"");
+    var docRef=getMoviesCollection().doc(movie.id);
     return docRef.delete();
 
   }
