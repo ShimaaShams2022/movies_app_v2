@@ -53,7 +53,12 @@ class _WatchListScreenState extends State<WatchListScreen> {
       }
       // you have data
       List<Movie>? moviesList=snapshot.data;
-       return WatchAllListWidget(moviesList!);
+
+       if(moviesList!.contains('false')){
+         setState(() {});
+
+       }
+       return WatchAllListWidget(moviesList);
     })
       ],
     );

@@ -59,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<PopularViewModel>(
@@ -168,13 +169,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 Expanded(
                                   child: SizedBox(
-                                    height: 200,
+                                    height: 220,
                                     child: ListView.builder(
                                       itemCount: recommendedMoviesList.length,
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
                                         return PosterWithSomeDetails(
-                                          filmInformation:recommendedMoviesList[index]
+                                          filmInformation:recommendedMoviesList[index],
 
                                         );
                                       },

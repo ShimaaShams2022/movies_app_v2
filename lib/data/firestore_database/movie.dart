@@ -10,7 +10,7 @@ class Movie{
     this.title,
     this.date,
     this.posterName,
-    this.isInWatchList=false,
+    this.isInWatchList,
   });
 
   Movie.fromFireStore(Map<String,dynamic>? data):
