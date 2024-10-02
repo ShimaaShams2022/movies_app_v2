@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app_v2/data/firestore_database/movie.dart';
+import 'package:movies_app_v2/presentation/basic_files/loading_image.dart';
 
 import '../basic_files/book_mark_with_check.dart';
 import '../basic_files/my_theme/my_theme_data.dart';
 import '../basic_files/utilities.dart';
 
 class WatchListMovieWidget extends StatelessWidget {
-  WatchListMovieWidget({required this.imageName,super.key});
-  String? imageName;
+  WatchListMovieWidget({required this.movie,super.key});
+  Movie movie;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class WatchListMovieWidget extends StatelessWidget {
               child: Stack(
                 alignment: Alignment.topLeft,
                 children: [
-                  Image.asset(getFullPathImage(imageName!)),
+                 LoadingImage(imageName:movie.posterName, width: 100, height: 80),
                 Positioned(
                     top:-5,
                     left:-9,
@@ -34,8 +36,8 @@ class WatchListMovieWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Alita Battle Angel",style: MyThemeData.darkTheme.textTheme.titleSmall),
-                Text("2019",style: MyThemeData.darkTheme.textTheme.bodyLarge),
+                Text(movie.title??"",style: MyThemeData.darkTheme.textTheme.titleSmall),
+                Text(splitYear(movie.date??"2023"),style: MyThemeData.darkTheme.textTheme.bodyLarge),
                 Text("Rosa Salazar, Christoph Waltz",style: MyThemeData.darkTheme.textTheme.bodyLarge)
               ],
             )

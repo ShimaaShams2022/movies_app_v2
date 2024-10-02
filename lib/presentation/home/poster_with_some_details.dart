@@ -16,8 +16,11 @@ class PosterWithSomeDetails extends StatelessWidget {
 
 
 
+
   @override
   Widget build(BuildContext context) {
+   
+
     return Container(
       decoration: BoxDecoration(
         color: MyThemeData.posterDetailsBackground,
@@ -39,7 +42,8 @@ class PosterWithSomeDetails extends StatelessWidget {
           SizedBox(
               width:MediaQuery.of(context).size.width*0.22,
               height: MediaQuery.of(context).size.height*0.14,
-              child: NetworkPosterWithBookmark(addWatchList:false , filmInformation: filmInformation ,)),
+              child: NetworkPosterWithBookmark(filmInformation: filmInformation,)
+          ),
           Container(
             margin:const EdgeInsets.all(0) ,
             padding: const EdgeInsets.all(2),
